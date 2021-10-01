@@ -4,6 +4,8 @@ import { NavigationContainer } from '@react-navigation/native'
 import IndexScreen from '../screens/IndexScreen'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { setStatusBarStyle } from 'expo-status-bar'
+import ShowScreen from '../screens/ShowScreen'
+import WebScreen from '../screens/WebScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -22,6 +24,21 @@ const AppStack = () => (
             color: '#fff'
           }
         }}
+      />
+      <Stack.Screen
+        name='Show'
+        component={ShowScreen}
+        options={({ route }) => ({
+          title: route.params.label
+        })}
+      />
+      <Stack.Screen
+        name='Web'
+        component={WebScreen}
+        options={({ route }) => ({
+          title: route.params.label,
+          headerBackTitle: 'Back to Show'
+        })}
       />
     </Stack.Navigator>
   </NavigationContainer>

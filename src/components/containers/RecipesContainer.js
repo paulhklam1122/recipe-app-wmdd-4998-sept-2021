@@ -5,7 +5,7 @@ import Loading from '../layout/Loading'
 import RecipesList from '../lists/RecipesList'
 import { getRecipes } from '../services/api'
 
-const RecipesContainer = () => {
+const RecipesContainer = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [recipes, setRecipes] = useState([])
   const [ingredient, setIngredient] = useState(null)
@@ -33,7 +33,7 @@ const RecipesContainer = () => {
     <Container>
       <Center px={4}>
         <Form onInputChange={handleInputChange} fetchRecipes={fetchRecipes} />
-        {isLoading ? <Loading /> : <RecipesList />}
+        {isLoading ? <Loading /> : <RecipesList navigation={navigation} />}
       </Center>
     </Container>
   )
